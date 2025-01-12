@@ -21,7 +21,6 @@ scroll-behavior: smooth;
 overflow-x: hidden;        /* Prevent horizontal scrolling */
 font-family: 'Domine', serif;
 color: #5c5e8a; /* Comet */
-/* We'll keep overflow-y: auto so scrolling is normal on most devices. */
 }
 
 /* 4) Vertical Gradient */
@@ -32,12 +31,12 @@ background: linear-gradient(
   #c4c0d8 50%,
   #909ccb 100%
 );
-scroll-snap-type: y mandatory;  /* Page snapping (disabled in smaller screens below) */
+scroll-snap-type: y mandatory;  /* Page snapping (disabled on smaller screens below) */
 }
 
 /* 5) Fullscreen Sections (use min-height for mobile-friendliness) */
 .page {
-min-height: 100vh;                /* Use min-height rather than fixed height */
+min-height: 100vh; /* Use min-height so content can grow */
 width: 100%;
 scroll-snap-align: start;
 scroll-snap-stop: always;
@@ -59,7 +58,7 @@ font-size: 3rem;
 color: #1c203b;
 margin-bottom: 1.5rem;
 
-/* --- NEW wipe-in animation --- */
+/* --- wipe-in animation --- */
 opacity: 0;
 animation: wipeInFromLeft 2s cubic-bezier(0.77, 0, 0.175, 1) 0.3s forwards; 
 }
@@ -117,7 +116,7 @@ position: relative;
 display: flex;
 justify-content: center;
 align-items: center;
-opacity: 0.5;               /* Faded by default */
+opacity: 0.5; /* Faded by default */
 transition: opacity 0.4s ease;
 }
 /* Active slide should be fully opaque */
@@ -127,13 +126,13 @@ opacity: 1;
 
 /* Slide Content */
 .slide-content {
-position: relative;         /* So the "Open" button can be absolutely positioned */
+position: relative;         
 background-color: #ffffff;
 border-radius: 1rem; 
 box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 width: 500px; 
 max-width: 100%; 
-padding: 1.5rem;
+padding: 2.5rem 1.5rem 1.5rem; /* Extra top padding to avoid overlap with button */
 text-align: center;
 display: flex;
 flex-direction: column;
@@ -141,6 +140,7 @@ gap: 1rem;
 }
 
 .slide-content h3 {
+margin-top: 0;
 margin-bottom: 0.5rem;
 }
 
@@ -174,9 +174,9 @@ font-size: 1rem;
 background-color: #3c3e6a;
 }
 
-/* 9) Make sure .page2 has some top spacing so slides aren't jammed at the top */
+/* 9) Space above the swiper in Page 2 so it doesn't bleed */
 .page2 {
-padding-top: 2rem;  /* Adds space above the swiper on smaller devices */
+padding-top: 2rem;  
 }
 
 /* 10) Swiper Navigation Arrows */
@@ -190,7 +190,6 @@ top: 50%;
 transform: translateY(-50%);
 z-index: 9999;
 font-size: 2rem;
-/* Adjust dimension if you want bigger clickable area */
 width: 40px;
 height: 40px;
 display: flex;
